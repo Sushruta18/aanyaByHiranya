@@ -34,7 +34,18 @@ h1, h2, h3, h4 {
   font-family: var(--font-family-serif);
 }
 
-/* Scroll reveal */
+/* ─── Hero mosaic: seamless upward drift ───────────────────────────────────
+   Each column has 6 images duplicated (12 total). The animation moves the
+   entire column up by exactly 50% of its height (= the original 6 images),
+   then snaps back — creating a perfectly seamless infinite loop. Each column
+   runs at a different speed + delay so they feel independent and alive.
+   ─────────────────────────────────────────────────────────────────────── */
+@keyframes heroMosaicDrift {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* ─── Scroll reveal ─── */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -48,7 +59,6 @@ h1, h2, h3, h4 {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
-/* Reveal from left */
 .reveal-left {
   opacity: 0;
   transform: translateX(-40px);
@@ -56,7 +66,6 @@ h1, h2, h3, h4 {
 }
 .reveal-left.visible { opacity: 1; transform: translateX(0); }
 
-/* Reveal from right */
 .reveal-right {
   opacity: 0;
   transform: translateX(40px);
@@ -64,7 +73,6 @@ h1, h2, h3, h4 {
 }
 .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
-/* Scale reveal */
 .reveal-scale {
   opacity: 0;
   transform: scale(0.95);
@@ -72,7 +80,6 @@ h1, h2, h3, h4 {
 }
 .reveal-scale.visible { opacity: 1; transform: scale(1); }
 
-/* Smooth page transitions */
 main {
   animation: fadeIn 0.6s cubic-bezier(0.16,1,0.3,1);
 }
@@ -81,20 +88,13 @@ main {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Floating animation for hero elements */
-.float {
-  animation: float 6s ease-in-out infinite;
-}
+.float { animation: float 6s ease-in-out infinite; }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-10px); }
 }
 
-/* Shimmer on images */
-.shimmer {
-  position: relative;
-  overflow: hidden;
-}
+.shimmer { position: relative; overflow: hidden; }
 .shimmer::after {
   content: "";
   position: absolute;
@@ -105,7 +105,6 @@ main {
 }
 .shimmer:hover::after { transform: translateX(100%); }
 
-/* Smooth underline on links */
 .underline-anim {
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 1px;
@@ -115,7 +114,6 @@ main {
 }
 .underline-anim:hover { background-size: 100% 1px; }
 
-/* Stagger children */
 .stagger > * {
   opacity: 0;
   transform: translateY(20px);
@@ -128,7 +126,6 @@ main {
 .stagger.visible > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay: 0.45s; }
 .stagger.visible > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay: 0.55s; }
 
-/* Pulse dot for availability badge */
 .pulse-dot {
   display: inline-block;
   width: 6px; height: 6px;
@@ -141,13 +138,11 @@ main {
   50%       { opacity: 0.4; transform: scale(0.8); }
 }
 
-/* Scroll line in hero */
 @keyframes scrollLine {
   0%   { transform: translateY(-100%); }
   100% { transform: translateY(300%); }
 }
 
-/* Cursor dot */
 .cursor-dot {
   width: 8px; height: 8px;
   background: var(--color-forest);

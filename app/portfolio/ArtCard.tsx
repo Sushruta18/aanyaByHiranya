@@ -24,7 +24,7 @@ export default function ArtCard({ art }: { art: any }) {
   return (
     <div className="group">
       <Link href={`/artwork/${art.id}`}>
-        <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-forest/5"
+        <div className="relative aspect-[4/5] overflow-hidden mb-5 bg-forest/5"
           onMouseEnter={startSlide} onMouseLeave={stopSlide}>
           {allImages.map((img, i) => (
             <div key={i} className={`absolute inset-0 transition-opacity duration-500 ${i === current ? "opacity-100" : "opacity-0"}`}>

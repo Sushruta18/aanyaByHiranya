@@ -48,7 +48,7 @@ export default async function Portfolio() {
                 <h2 className="font-serif text-3xl md:text-4xl text-forest dark:text-beige mb-3">{cat.label}</h2>
                 <p className="text-sm text-dark/60 dark:text-beige/60 max-w-lg">{cat.desc}</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16">
                 {pieces.map((art: any, i: number) => (
                   <div key={art.id} className={`reveal reveal-delay-${Math.min(i+1,3)}`}>
                     <ArtCard art={art} />

@@ -28,11 +28,12 @@ export default function Nav() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-forest/10 dark:border-beige/10 transition-all duration-300 ${scrolled ? "bg-beige/95 dark:bg-dark/95 shadow-sm" : "bg-beige/80 dark:bg-dark/80"}`}>
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Anya by Hiranya" className="h-10 w-auto object-contain" />
-          <span className="font-serif text-xl tracking-wide text-forest dark:text-beige">Anya by Hiranya</span>
+          <img src="/logo.png" alt="aanyaByHiranya" className="h-10 w-auto object-contain" />
+          <span className="font-serif text-xl tracking-wide text-forest dark:text-beige">aanyaByHiranya</span>
         </Link>
 
         {/* Desktop nav */}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase-server";
 import ArtCard from "./portfolio/ArtCard";
+import HeroSection from "@/components/HeroSection";
 
 const PLACEHOLDER = [
   { id:"1", title:"Pressed Botanicals I", category:"Botanical & Pressed Flower", price:3200, availability:"Available", medium:"Pressed flowers on paper", image_url:"https://images.unsplash.com/photo-1490750967868-88df5691cc5e?w=800&q=80", images:["https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80","https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800&q=80"] },
@@ -34,61 +35,11 @@ export default async function Home() {
 
   return (
     <div className="bg-beige dark:bg-dark min-h-screen">
-      {/* Hero — mosaic grid */}
-      <section className="relative h-screen overflow-hidden">
-        {/* Image mosaic */}
-        <div className="absolute inset-0 grid grid-cols-3 grid-rows-2 gap-1">
-          <div className="relative col-span-2 row-span-2 overflow-hidden">
-            <Image src="https://images.unsplash.com/photo-1490750967868-88df5691cc5e?w=1200&q=80"
-              alt="" fill className="object-cover scale-105 hover:scale-100 transition-transform duration-700" priority />
-          </div>
-          <div className="relative overflow-hidden">
-            <Image src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
-              alt="" fill className="object-cover scale-105 hover:scale-100 transition-transform duration-700" />
-          </div>
-          <div className="relative overflow-hidden">
-            <Image src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&q=80"
-              alt="" fill className="object-cover scale-105 hover:scale-100 transition-transform duration-700" />
-          </div>
-        </div>
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-dark/50 z-10" />
+      {/* Hero — portfoliobox-style split with infinite mosaic */}
+      <HeroSection />
 
-        {/* Text */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6">
-          <p className="text-xs tracking-[0.4em] uppercase text-white/60 mb-6 reveal">Anya by Hiranya</p>
-          <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl text-white leading-none mb-4 reveal reveal-delay-1">
-            Art. Nature.
-          </h1>
-          <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl text-rose leading-none mb-10 reveal reveal-delay-2 italic">
-            Intention.
-          </h1>
-          <p className="text-sm text-white/70 max-w-md leading-relaxed mb-10 reveal reveal-delay-3">
-            Botanical art, resin jewellery & acrylic paintings — each piece made slowly, with love.
-          </p>
-          <div className="flex gap-4 reveal reveal-delay-3">
-            <Link href="/portfolio"
-              className="text-xs tracking-widest uppercase bg-white text-dark px-8 py-3 hover:bg-rose hover:text-white transition-all duration-300">
-              View All Works
-            </Link>
-            <Link href="/commission"
-              className="text-xs tracking-widest uppercase border border-white text-white px-8 py-3 hover:bg-white hover:text-dark transition-all duration-300">
-              Commission
-            </Link>
-          </div>
-        </div>
-
-        {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 reveal">
-          <span className="text-xs tracking-widest uppercase text-white/40">Scroll</span>
-          <div className="w-px h-12 bg-white/20 relative overflow-hidden">
-            <div className="absolute top-0 w-full bg-white/60 animate-scroll-line" style={{height:"40%", animation:"scrollLine 1.5s ease-in-out infinite"}} />
-          </div>
-        </div>
-      </section>
-
-      {/* Works by category — 3 each */}
+      {/* Works by category */}
       {CATEGORIES.map(cat => {
         const pieces = artworks.filter((a: any) => a.category === cat.key).slice(0, 3);
         if (pieces.length === 0) return null;
@@ -104,7 +55,7 @@ export default async function Home() {
                 See More →
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 stagger reveal">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16 stagger reveal">
               {pieces.map((art: any) => <ArtCard key={art.id} art={art} />)}
             </div>
           </section>
